@@ -1,1 +1,1 @@
-import { default } from './Feed';
+export { default } from './Feed';
