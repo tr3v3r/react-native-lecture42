@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, TouchableOpacity, View, Image,
+  StyleSheet, TouchableOpacity, View,
 } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 
@@ -106,11 +106,6 @@ export default class TakePhotoScreen extends Component {
             style={styles.capture}
           />
         </View>
-        <Image
-          source={{ uri: this.state.uri }} style={{
-            width: 50, height: 50, borderWidth: 1, borderColor: 'red',
-          }}
-        />
       </View>
     );
   }
