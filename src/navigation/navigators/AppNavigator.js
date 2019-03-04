@@ -43,6 +43,7 @@ const TabNavigator = createBottomTabNavigator({
   'Favourite': ChooseFromLibraryScreen,
   'Profile': Feed,
 }, {
+  initialRouteName: 'HomeNavigator',
   tabBarOptions: {
     activeTintColor: '#34393d',
     showLabel: false,
