@@ -37,8 +37,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow to use camera?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow to use video library?</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Allow write to the photo library?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow to use photo library?</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Octicons.ttf</string>

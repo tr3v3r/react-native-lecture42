@@ -1,0 +1,1 @@
+export const STORAGE_PATH_POSTS = 'STORAGE_PATH_POSTS';
