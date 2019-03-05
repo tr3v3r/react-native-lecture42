@@ -4,21 +4,23 @@ import { View, Image } from 'react-native';
 import { Header, BottomPanel } from './components';
 
 
-const image = require('../../../../assets/post_placeholder_1.jpg');
-
-
 export default class Post extends Component {
   render() {
+    const { name, location, image } = this.props;
+
     return (
-      <View
-        style={{
-          borderWidth: 1,
-          borderColor: 'red',
-        }}
-      >
-        <Header />
+      <View>
+        <Header
+          name={name}
+          location={location}
+        />
         <Image
           source={image}
+          resizeMode="cover"
+          style={{
+            height: 300,
+            width: undefined,
+          }}
         />
         <BottomPanel />
       </View>
