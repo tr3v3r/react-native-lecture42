@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   PermissionsAndroid,
   Platform,
+  StatusBar,
 } from 'react-native';
 
 const screenWidth = Dimensions.get('screen').width;
@@ -123,6 +124,7 @@ export default class ChooseFromLibraryScreen extends Component {
             );
           })}
         </ScrollView>
+        <StatusBar hidden animated />
       </View>
     );
   }
