@@ -11,6 +11,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import Feed from '../../screens/Feed';
+import TakePhotoScreen from '../../screens/TakePhotoScreen';
+import ChooseFromLibraryScreen from '../../screens/ChooseFromLibraryScreen';
 
 import HomeStackNavigator from './HomeStackNavigator';
 
@@ -37,10 +39,11 @@ const tabIcons = {
 const TabNavigator = createBottomTabNavigator({
   'HomeNavigator': HomeStackNavigator,
   'Search': Feed,
-  'Add': Feed,
-  'Favourite': Feed,
+  'Add': TakePhotoScreen,
+  'Favourite': ChooseFromLibraryScreen,
   'Profile': Feed,
 }, {
+  initialRouteName: 'HomeNavigator',
   tabBarOptions: {
     activeTintColor: '#34393d',
     showLabel: false,
