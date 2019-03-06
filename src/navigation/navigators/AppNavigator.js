@@ -15,6 +15,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import HomeStackNavigator from './HomeStackNavigator';
 import AddPostNavigator from './AddPostNavigator';
+import AddDescriptionScreen from '../../screens/AddDescriptionScreen';
+
 
 function createIcon(Engine, name) {
   return (nativeProps) => {
@@ -74,52 +76,37 @@ const AppNavigator = createStackNavigator({
     },
   },
 
-  'addDescriptionScreen': {
-    screen: View,
-    navigationOptions: ({ navigation }) => {
-      function onSharePress() {
-        navigation.navigate('HomeNavigator');
-      }
-
-      return {
-        title: 'New Post',
-        headerForceInset: { top: 'never' },
-        headerTintColor: '#34393d',
-        headerRight: (
-          <TouchableOpacity style={{ marginRight: 10 }} onPress={onSharePress}>
-            <Text>Share</Text>
-          </TouchableOpacity>
-        ),
-        headerStyle: {
-          height: 40,
-        },
-      };
-    },
-  },
+  'addDescriptionScreen': AddDescriptionScreen,
 
   'addPostNavigator': {
     screen: AddPostNavigator,
     navigationOptions: ({ navigation }) => {
       const currentIndex = navigation.state.index;
       const currentRouteName = navigation.state.routes[currentIndex].routeName;
+
       function onNextPress() {
-        navigation.navigate('addDescriptionScreen');
+        const uri = navigation.getParam('uri');
+        navigation.navigate('addDescriptionScreen', { uri });
       }
 
       return {
         title: currentRouteName,
         headerBackTitle: null,
         headerForceInset: { top: 'never' },
+        headerTitleContainerStyle: {
+          justifyContent: 'center',
+        },
         headerLeft: ({ onPress }) => (
           <TouchableOpacity style={{ marginLeft: 10 }} onPress={onPress}>
             <Text>Cancel</Text>
           </TouchableOpacity>
         ),
-        headerRight: currentIndex === 0 && (
+        headerRight: currentIndex === 0 ? (
           <TouchableOpacity style={{ marginRight: 10 }} onPress={onNextPress}>
             <Text>Next</Text>
           </TouchableOpacity>
-        ),
+        )
+          : (<View />),
         headerStyle: {
           height: 40,
         },

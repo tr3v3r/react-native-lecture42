@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, ScrollView, AsyncStorage, ActivityIndicator, View,
+  StyleSheet, ScrollView, ActivityIndicator, View, RefreshControl,
 } from 'react-native';
-import { isNull, map } from 'lodash';
+
+import { map } from 'lodash';
 
 import Post from './components/Post';
-import { STORAGE_PATH_POSTS } from '../../common/constants';
 
-
-const image_1 = require('../../assets/post_placeholder_1.jpg');
-const image_2 = require('../../assets/post_placeholder_2.jpg');
-const image_3 = require('../../assets/post_placeholder_3.jpg');
+import { getPosts } from '../../api';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,56 +17,23 @@ const styles = StyleSheet.create({
   },
 });
 
-
 export default class Feed extends Component {
   state = {
     posts: null,
+    refreshing: false,
   }
 
   componentDidMount() {
     this.loadPosts();
   }
 
-  loadPosts = () => {
-    AsyncStorage.getItem(
-      STORAGE_PATH_POSTS,
-      (error, data) => {
-        const posts = JSON.parse(data);
-
-        if (error || isNull(posts)) {
-          this.savePostsToStorage();
-        } else {
-          this.setState({ posts });
-        }
-      },
-    );
+  loadPosts = async () => {
+    const posts = await getPosts();
+    this.setState({ posts, refreshing: false });
   }
 
-  savePostsToStorage = () => {
-    AsyncStorage.setItem(
-      STORAGE_PATH_POSTS,
-      JSON.stringify(
-        [
-          {
-            name: 'Bruce Wayne',
-            location: 'Gotham',
-            image: image_1,
-          },
-          {
-            name: 'Jim Gordon',
-            location: 'Gotham',
-            image: image_2,
-          },
-          {
-            name: 'Alfred Pennyworth',
-            location: 'Gotham',
-            image: image_3,
-          },
-        ],
-      ),
-    );
-
-    this.loadPosts();
+  onRefresh = () => {
+    this.setState({ refreshing: true }, this.loadPosts);
   }
 
   renderPosts = () => {
@@ -90,9 +54,8 @@ export default class Feed extends Component {
     );
   }
 
-
   render() {
-    const { posts } = this.state;
+    const { posts, refreshing } = this.state;
 
     if (!posts) {
       return (
@@ -105,7 +68,14 @@ export default class Feed extends Component {
     }
 
     return (
-      <ScrollView>
+      <ScrollView
+        refreshControl={(
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={this.onRefresh}
+          />
+        )}
+      >
         {this.renderPosts()}
       </ScrollView>
     );

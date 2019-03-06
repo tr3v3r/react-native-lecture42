@@ -46,7 +46,6 @@ export default class TakePhotoScreen extends Component {
 
   state = {
     type: RNCamera.Constants.Type.back,
-    uri: '',
   }
 
   toggleType = () => {
@@ -64,12 +63,17 @@ export default class TakePhotoScreen extends Component {
       if (this.camera) {
         const options = { quality: 0.5, base64: true };
         const data = await this.camera.current.takePictureAsync(options);
-        this.setState({ uri: data.uri });
+        this.navigateToAddDescriptionScreen(data.uri);
       }
     } catch (error) {
       alert(error);
     }
   };
+
+
+  navigateToAddDescriptionScreen = (uri) => {
+    this.props.navigation.navigate('addDescriptionScreen', { uri });
+  }
 
   render() {
     return (
@@ -95,10 +99,7 @@ export default class TakePhotoScreen extends Component {
               name="refresh"
             />
           </TouchableOpacity>
-
-
         </View>
-
         <View style={styles.captureContainer}>
           <TouchableOpacity
             activeOpacity={0.8}

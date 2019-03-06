@@ -89,6 +89,7 @@ export default class ChooseFromLibraryScreen extends Component {
 
   onPress = (pickedImage) => () => {
     this.setState({ pickedImage });
+    this.props.navigation.dangerouslyGetParent().setParams({ uri: pickedImage });
   }
 
   render() {
