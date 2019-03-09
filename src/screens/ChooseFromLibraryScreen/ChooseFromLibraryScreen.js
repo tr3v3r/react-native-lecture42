@@ -41,9 +41,13 @@ const styles = StyleSheet.create({
 });
 
 export default class ChooseFromLibraryScreen extends Component {
-  state = {
-    photos: [],
-    pickedImage: '',
+  constructor(props) {
+    super(props);
+    this.props.navigation.dangerouslyGetParent().setParams({ 'navigateToAddDescriptionScreen': this.navigateToAddDescriptionScreen });
+    this.state = {
+      photos: [],
+      pickedImage: '',
+    };
   }
 
   componentDidMount = async () => {
@@ -68,7 +72,10 @@ export default class ChooseFromLibraryScreen extends Component {
 
   onPress = (pickedImage) => () => {
     this.setState({ pickedImage });
-    this.props.navigation.dangerouslyGetParent().setParams({ uri: pickedImage });
+  }
+
+  navigateToAddDescriptionScreen = () => {
+    this.props.navigation.navigate('addDescriptionScreen', { uri: this.state.pickedImage });
   }
 
   render() {

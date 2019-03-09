@@ -83,11 +83,7 @@ const AppNavigator = createStackNavigator({
     navigationOptions: ({ navigation }) => {
       const currentIndex = navigation.state.index;
       const currentRouteName = navigation.state.routes[currentIndex].routeName;
-
-      function onNextPress() {
-        const uri = navigation.getParam('uri');
-        navigation.navigate('addDescriptionScreen', { uri });
-      }
+      const navigateToAddDescriptionScreen = navigation.getParam('navigateToAddDescriptionScreen');
 
       return {
         title: currentRouteName,
@@ -102,7 +98,7 @@ const AppNavigator = createStackNavigator({
           </TouchableOpacity>
         ),
         headerRight: currentIndex === 0 ? (
-          <TouchableOpacity style={{ marginRight: 10 }} onPress={onNextPress}>
+          <TouchableOpacity style={{ marginRight: 10 }} onPress={navigateToAddDescriptionScreen}>
             <Text>Next</Text>
           </TouchableOpacity>
         )
