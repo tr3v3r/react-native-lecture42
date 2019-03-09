@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import {
-  Image, StyleSheet, TextInput, ScrollView, TouchableOpacity, Text,
+  Image, StyleSheet, TextInput, ScrollView, TouchableOpacity, Text, View,
 } from 'react-native';
 
-import { addPost } from '../../api';
+import { ListItem } from 'react-native-elements';
 
+import { addPost } from '../../api';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 30,
+  },
+  imageContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'flex-start',
-    paddingTop: 30,
+    marginBottom: 20,
   },
   image: {
     width: 100,
@@ -23,7 +26,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignSelf: 'flex-start',
     padding: 0,
-    borderBottomWidth: 1,
   },
 });
 
@@ -83,13 +85,37 @@ export default class AddDescriptionScreen extends Component {
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="never"
       >
-        <Image style={styles.image} source={{ uri }} />
-        <TextInput
-          placeholder="Write your name..."
-          style={styles.input}
-          onChangeText={this.onChangeText}
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={{ uri }} />
+          <TextInput
+            placeholder="Write your name..."
+            style={styles.input}
+            onChangeText={this.onChangeText}
+          />
+        </View>
+        <ListItem
+          title="Tag People"
+          bottomDivider
+          topDivider
+          chevron
         />
-
+        <ListItem
+          title="Add Location"
+          bottomDivider
+          chevron
+        />
+        <ListItem
+          title="Facebook"
+          switch
+        />
+        <ListItem
+          title="Twitter"
+          switch
+        />
+        <ListItem
+          title="Tumblr"
+          switch
+        />
       </ScrollView>
     );
   }

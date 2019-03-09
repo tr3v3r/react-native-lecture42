@@ -8,9 +8,10 @@ import {
   Dimensions,
   TouchableOpacity,
   PermissionsAndroid,
-  Platform,
   StatusBar,
 } from 'react-native';
+
+import { askPermissionFor } from '../../api/permissions';
 
 const screenWidth = Dimensions.get('screen').width;
 
@@ -46,7 +47,13 @@ export default class ChooseFromLibraryScreen extends Component {
   }
 
   componentDidMount = async () => {
-    if (Platform.OS === 'ios') {
+    try {
+      await askPermissionFor(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        'Read Storage Permission',
+        'App need acces to read your photo storage',
+      );
+
       const r = await CameraRoll.getPhotos({
         first: 20,
         assetType: 'Photos',
@@ -54,36 +61,8 @@ export default class ChooseFromLibraryScreen extends Component {
 
       const photos = r.edges.map(p => p.node.image.uri);
       this.setState({ photos, pickedImage: photos[0] });
-    } else {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-          {
-            title: 'Cool Photo App Camera Permission',
-            message:
-                'Cool Photo App needs access to your camera '
-                + 'so you can take awesome pictures.',
-            buttonNeutral: 'Ask Me Later',
-            buttonNegative: 'Cancel',
-            buttonPositive: 'OK',
-          },
-        );
-
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          const r = await CameraRoll.getPhotos({
-            first: 20,
-            assetType: 'Photos',
-          });
-
-          const photos = r.edges.map(p => p.node.image.uri);
-          this.setState({ photos, pickedImage: photos[0] });
-        } else {
-          const error = { message: 'Access denied!' };
-          throw error;
-        }
-      } catch (error) {
-        alert(error.message);
-      }
+    } catch (error) {
+      console.warn(error.message);
     }
   };
 
