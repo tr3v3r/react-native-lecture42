@@ -16,6 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeStackNavigator from './HomeStackNavigator';
 import AddPostNavigator from './AddPostNavigator';
 import AddDescriptionScreen from '../../screens/AddDescriptionScreen';
+import Profile from '../../screens/Profile';
 
 
 function createIcon(Engine, name) {
@@ -51,7 +52,7 @@ const TabNavigator = createBottomTabNavigator({
 
   },
   'Favourite': View,
-  'Profile': View,
+  'Profile': Profile,
 }, {
   initialRouteName: 'HomeNavigator',
   tabBarOptions: {
