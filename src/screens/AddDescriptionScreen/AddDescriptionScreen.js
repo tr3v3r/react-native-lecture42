@@ -70,6 +70,7 @@ export default class AddDescriptionScreen extends Component {
       'name': this.state.value,
       'image': { uri: this.state.uri },
       'location': 'Belarus',
+      'isOwn': true,
     });
   }
 

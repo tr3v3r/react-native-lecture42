@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
 
 export default class UserInfo extends Component {
   render() {
+    const { numberOfPosts = 0 } = this.props;
+
     return (
       <View style={styles.container}>
 
@@ -74,7 +76,7 @@ export default class UserInfo extends Component {
           <View style={styles.infoContainer}>
             <View style={styles.postsContainer}>
               <View style={styles.itemInfo}>
-                <Text style={styles.infoText}>321</Text>
+                <Text style={styles.infoText}>{numberOfPosts}</Text>
                 <Text>posts</Text>
               </View>
               <View style={styles.itemInfo}>
@@ -91,7 +93,7 @@ export default class UserInfo extends Component {
                 <Text>Promotions</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button}>
-                <Text>Edit UserInfo</Text>
+                <Text>Edit Profile</Text>
               </TouchableOpacity>
             </View>
           </View>
