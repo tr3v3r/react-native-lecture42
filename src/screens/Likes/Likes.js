@@ -20,7 +20,7 @@ const styles = {
     height: 250,
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: -250,
   },
 };
 export default class Likes extends Component {
@@ -98,7 +98,7 @@ export default class Likes extends Component {
 
     const traslateX2 = this.animatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [250, 0],
+      outputRange: [0, -250],
       extrapolateLeft: 'clamp',
     });
 
