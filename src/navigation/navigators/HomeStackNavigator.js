@@ -60,15 +60,17 @@ const HomeStackNavigator = createStackNavigator({
           />
         </TouchableOpacity>
       ),
-
       headerRightContainerStyle: {
         marginRight: 10,
       },
-
       headerRight: RightIcon,
-
+      headerTitleContainerStyle: {
+        justifyContent: 'center',
+      },
       headerTitle: <Image
-        style={{ height: 30 }}
+        style={{
+          height: 30, width: 100,
+        }}
         resizeMode="contain"
         source={require('../../assets/logo.png')}
       />,

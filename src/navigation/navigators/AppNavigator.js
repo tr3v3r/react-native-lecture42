@@ -14,6 +14,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import HomeStackNavigator from './HomeStackNavigator';
+import LikesStackNavigator from './LikesStackNavigator';
 import AddPostNavigator from './AddPostNavigator';
 import AddDescriptionScreen from '../../screens/AddDescriptionScreen';
 import Profile from '../../screens/Profile';
@@ -35,7 +36,7 @@ const tabIcons = {
   'HomeNavigator': createIcon(Foundation, 'home'),
   'Search': createIcon(Ionicons, 'ios-search'),
   'Add': createIcon(Feather, 'plus-square'),
-  'Favourite': createIcon(Ionicons, 'ios-heart-empty'),
+  'Likes': createIcon(Ionicons, 'ios-heart-empty'),
   'Profile': createIcon(AntDesign, 'user'),
 };
 
@@ -51,7 +52,7 @@ const TabNavigator = createBottomTabNavigator({
     },
 
   },
-  'Favourite': View,
+  'Likes': LikesStackNavigator,
   'Profile': Profile,
 }, {
   initialRouteName: 'HomeNavigator',
