@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.11",
+    "lottie-react-native": "^2.5.11",
     "react": "16.6.3",
     "react-native": "0.58.5",
     "react-native-camera": "^1.12.0",

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Button, Animated, LayoutAnimation, UIManager, Easing,
 } from 'react-native';
+// import LottieView from 'lottie-react-native';
 import { ListItem } from 'react-native-elements';
 
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true); // eslint-disable-line
@@ -68,6 +69,13 @@ export default class Likes extends Component {
       extrapolateLeft: 'clamp',
     });
 
+    // return (
+    //   <LottieView
+    //     source={require('./4906-lady-guitar-player.json')}
+    //     autoPlay
+    //     loop
+    //   />
+    // );
 
     return (
       <Animated.ScrollView
@@ -83,6 +91,7 @@ export default class Likes extends Component {
         contentContainerStyle={styles.contentContainer}
       >
         <Animated.Text onLayout={this.onLayout} style={[styles.text, { transform: [{ translateX }] }]}>Likes</Animated.Text>
+
         {this.renderItems()}
         <Button onPress={this.addLike} title="Add more" />
       </Animated.ScrollView>
