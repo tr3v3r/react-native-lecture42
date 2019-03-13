@@ -41,13 +41,16 @@ export default class Feed extends Component {
 
     return map(
       posts,
-      ({ name, location, image }, key) => {
+      ({
+        name, location, image, video,
+      }, key) => {
         return (
           <Post
             key={key}
             name={name}
             location={location}
             image={image}
+            video={video}
           />
         );
       },
