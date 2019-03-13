@@ -5,7 +5,9 @@ export const STORAGE_PATH_POSTS = 'STORAGE_PATH_POSTS';
 const image_1 = require('../assets/post_placeholder_1.jpg');
 const image_2 = require('../assets/post_placeholder_2.jpg');
 const image_3 = require('../assets/post_placeholder_3.jpg');
-
+const video_1 = require('../assets/joker_laugh.mp4');
+const video_2 = require('../assets/joker_so_serious.mp4');
+const video_3 = require('../assets/joker_fire.mp4');
 
 export async function getPosts() {
   try {
@@ -18,6 +20,21 @@ export async function getPosts() {
       STORAGE_PATH_POSTS,
       JSON.stringify(
         [
+          {
+            name: 'Joker',
+            location: 'Laugh',
+            video: video_1,
+          },
+          {
+            name: 'Joker',
+            location: 'Why so serious?',
+            video: video_2,
+          },
+          {
+            name: 'Joker',
+            location: 'Fiiiireee',
+            video: video_3,
+          },
           {
             name: 'Bruce Wayne',
             location: 'Gotham',
