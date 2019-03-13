@@ -97,6 +97,11 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
     defaultConfig {
         applicationId "com.lecture42"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -141,6 +146,7 @@ android {
 
 dependencies {
     implementation project(':react-native-video')
+    implementation project(':lottie-react-native')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
