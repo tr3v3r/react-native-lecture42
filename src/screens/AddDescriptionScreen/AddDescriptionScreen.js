@@ -1,33 +1,13 @@
 import React, { Component } from 'react';
 import {
-  Image, StyleSheet, TextInput, ScrollView, TouchableOpacity, Text, View,
+  Image, TextInput, ScrollView, TouchableOpacity, Text, View,
 } from 'react-native';
 
 import { ListItem } from 'react-native-elements';
 
 import { addPost } from '../../api';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 30,
-  },
-  imageContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 20,
-  },
-  image: {
-    width: 100,
-    height: 100,
-  },
-  input: {
-    flex: 0.8,
-    marginVertical: 10,
-    alignSelf: 'flex-start',
-    padding: 0,
-  },
-});
+import { styles } from './styles';
 
 export default class AddDescriptionScreen extends Component {
   static navigationOptions({ navigation }) {

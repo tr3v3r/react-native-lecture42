@@ -4,46 +4,21 @@ import {
   ScrollView,
   Image,
   CameraRoll,
-  StyleSheet,
-  Dimensions,
   TouchableOpacity,
   PermissionsAndroid,
   StatusBar,
 } from 'react-native';
 
 import { askPermissionFor } from '../../api/permissions';
-
-const screenWidth = Dimensions.get('screen').width;
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  pickedImage: {
-    width: undefined,
-    height: 300,
-  },
-  scrollContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  image: {
-    width: (screenWidth - 3) / 4,
-    height: (screenWidth - 3) / 4,
-    marginRight: 1,
-    marginTop: 1,
-  },
-  picked: {
-    opacity: 0.3,
-  },
-});
+import { styles } from './styles';
 
 export default class ChooseFromLibraryScreen extends Component {
   constructor(props) {
     super(props);
-    this.props.navigation.dangerouslyGetParent().setParams({ 'navigateToAddDescriptionScreen': this.navigateToAddDescriptionScreen });
+    this.props.navigation
+      .dangerouslyGetParent()
+      .setParams({ 'navigateToAddDescriptionScreen': this.navigateToAddDescriptionScreen });
+
     this.state = {
       photos: [],
       pickedImage: '',

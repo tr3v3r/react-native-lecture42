@@ -9,6 +9,8 @@ import {
 } from 'react-navigation';
 
 import Feed from '../../screens/Feed';
+import Profile from '../../screens/Profile';
+
 
 const RightIcon = (
   <View style={{
@@ -76,6 +78,7 @@ const HomeStackNavigator = createStackNavigator({
       />,
     },
   },
+  userDetails: Profile,
 }, {
 
 });

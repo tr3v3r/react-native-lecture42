@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withNavigation } from 'react-navigation';
 import {
   TouchableOpacity, View, Image, Text, StyleSheet,
 } from 'react-native';
@@ -35,13 +36,17 @@ const styles = StyleSheet.create({
 });
 
 
-export default class Header extends Component {
+class Header extends Component {
+  navigateToUserDetails = () => {
+    this.props.navigation.navigate('userDetails');
+  }
+
   render() {
     const { name, location } = this.props;
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.userContainer}>
+        <TouchableOpacity onPress={this.navigateToUserDetails} style={styles.userContainer}>
           <Image
             style={styles.avatarImage}
             source={avatar}
@@ -61,3 +66,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default withNavigation(Header);

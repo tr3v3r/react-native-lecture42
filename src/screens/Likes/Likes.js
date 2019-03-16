@@ -1,28 +1,14 @@
 import React, { Component } from 'react';
 import {
-  Button, Animated, LayoutAnimation, UIManager, Easing, Image, View,
+  Button, Animated, LayoutAnimation, UIManager, Easing, View,
 } from 'react-native';
 // import LottieView from 'lottie-react-native';
 import { ListItem } from 'react-native-elements';
+import { styles } from './styles';
 
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true); // eslint-disable-line
 
-const styles = {
-  contentContainer: {
-    height: 1200,
-    padding: 10,
-  },
-  text: {
-    fontSize: 30,
-  },
-  image: {
-    width: 250,
-    height: 250,
-    position: 'absolute',
-    top: 0,
-    right: -250,
-  },
-};
+
 export default class Likes extends Component {
   constructor(props) {
     super(props);
@@ -81,53 +67,58 @@ export default class Likes extends Component {
     this.props.navigation.setParams({ headlineHeight: 10 + nativeEvent.layout.height });
   }
 
-  render() {
-    const translateX = this.scrollValue.interpolate({
-      inputRange: [0, this.state.headlineHeight],
-      outputRange: [0, 100],
-      extrapolateLeft: 'clamp',
-    });
+   onScroll = () => Animated.event(
+     [
+       { nativeEvent: { contentOffset: { y: this.scrollValue } } },
+     ],
+     {
+       useNativeDriver: true,
+     },
+   )
 
-    // return (
-    //   <LottieView
-    //     source={require('./4906-lady-guitar-player.json')}
-    //     autoPlay
-    //     loop
-    //   />
-    // );
+   render() {
+     const translateX = this.scrollValue.interpolate({
+       inputRange: [0, this.state.headlineHeight],
+       outputRange: [0, 100],
+       extrapolateLeft: 'clamp',
+     });
 
-    const traslateX2 = this.animatedValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, -250],
-      extrapolateLeft: 'clamp',
-    });
+     // return (
+     //   <LottieView
+     //     source={require('./4906-lady-guitar-player.json')}
+     //     autoPlay
+     //     loop
+     //   />
+     // );
 
-    return (
-      <View>
-        <Animated.ScrollView
-          scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [
-              { nativeEvent: { contentOffset: { y: this.scrollValue } } },
-            ],
-            {
-              useNativeDriver: true,
-            },
-          )}
-          contentContainerStyle={styles.contentContainer}
-        >
-          <Animated.Text onLayout={this.onLayout} style={[styles.text, { transform: [{ translateX }] }]}>Likes</Animated.Text>
+     const kittyTranslateX = this.animatedValue.interpolate({
+       inputRange: [0, 1],
+       outputRange: [0, -250],
+       extrapolateLeft: 'clamp',
+     });
 
-          {this.renderItems()}
-          <Button onPress={this.addLike} title="Add more" />
+     return (
+       <View>
+         <Animated.ScrollView
+           scrollEventThrottle={1}
+           onScroll={this.onScroll()}
+           contentContainerStyle={styles.contentContainer}
+         >
+           <Animated.Text
+             onLayout={this.onLayout}
+             style={[styles.text, { transform: [{ translateX }] }]}
+           >
+             {'Likes'}
+           </Animated.Text>
+           {this.renderItems()}
+           <Button onPress={this.addLike} title="Add more" />
+         </Animated.ScrollView>
+         <Animated.Image
+           source={require('../../assets/cat.png')}
+           style={[styles.image, { transform: [{ translateX: kittyTranslateX }] }]}
+         />
+       </View>
 
-        </Animated.ScrollView>
-        <Animated.Image
-          source={require('../../assets/cat.png')}
-          style={[styles.image, { transform: [{ translateX: traslateX2 }] }]}
-        />
-      </View>
-
-    );
-  }
+     );
+   }
 }
