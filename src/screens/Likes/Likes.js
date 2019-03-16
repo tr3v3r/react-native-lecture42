@@ -112,6 +112,7 @@ export default class Likes extends Component {
            </Animated.Text>
            {this.renderItems()}
            <Button onPress={this.addLike} title="Add more" />
+           <Button onPress={() => this.props.navigation.navigate('draggable')} title="Show draggable" />
          </Animated.ScrollView>
          <Animated.Image
            source={require('../../assets/cat.png')}

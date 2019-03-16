@@ -7,6 +7,7 @@ import {
 } from 'react-navigation';
 
 import Likes from '../../screens/Likes';
+import Draggable from '../../screens/Draggable';
 
 
 function TitleComponent({ scrollValue, headlineHeight }) {
@@ -21,7 +22,7 @@ function TitleComponent({ scrollValue, headlineHeight }) {
 }
 
 const LikesStackNavigator = createStackNavigator({
-  'Home': {
+  'likes': {
     screen: Likes,
     navigationOptions: ({ navigation }) => {
       const scrollValue = navigation.getParam('scrollValue');
@@ -38,6 +39,7 @@ const LikesStackNavigator = createStackNavigator({
       scrollValue: new Animated.Value(0),
     },
   },
+  'draggable': Draggable,
 }, {
 
 });
