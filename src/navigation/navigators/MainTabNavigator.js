@@ -66,4 +66,21 @@ const MainTabNavigator = createBottomTabNavigator({
 });
 
 
+// const MainTabNavigator = createBottomTabNavigator({
+//   'HomeNavigator': View,
+//   'Search': View,
+//   'Add': View,
+//   'Likes': View,
+//   'Profile': View,
+// }
+
+// function createIcon(Engine, name) {
+//   return (
+//     <Engine
+//       name={name}
+//     />
+//   );
+// }
+
+
 export default MainTabNavigator;
