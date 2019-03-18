@@ -27,4 +27,16 @@ const AppNavigator = createStackNavigator({
   mode: 'modal',
 });
 
+
+// const AppNavigator = createStackNavigator({
+//   'mainTabNavigator': MainTabNavigator,
+
+//   'addDescriptionScreen': AddDescriptionScreen,
+
+//   'addPostNavigator': AddPostNavigator,
+// }, {
+//   initialRouteName: 'mainTabNavigator',
+//   mode: 'modal',
+// });
+
 export default createAppContainer(AppNavigator);

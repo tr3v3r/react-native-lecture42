@@ -8,14 +8,22 @@ import { TouchableOpacity, Text, View } from 'react-native';
 import TakePhotoScreen from '../../screens/TakePhotoScreen';
 import ChooseFromLibraryScreen from '../../screens/ChooseFromLibraryScreen';
 
+// import { View } from 'react-native';
+
+// const AddPostNavigator = createBottomTabNavigator({
+//   'Library': View,
+//   'Photo': View,
+// })
+// export default AddPostNavigator;
+
 
 const AddPostNavigator = createBottomTabNavigator({
   'Library': ChooseFromLibraryScreen,
   'Photo': TakePhotoScreen,
 }, {
   tabBarOptions: {
-    activeTintColor: '#34393d',
     showIcon: false,
+    activeTintColor: '#34393d',
     tabStyle: {
       justifyContent: 'center',
     },
@@ -61,6 +69,18 @@ AddPostNavigator.navigationOptions = ({ navigation }) => {
     },
   };
 };
+
+
+// headerLeft: () => (
+//   <TouchableOpacity style={{ marginLeft: 10 }}>
+//     <Text>Cancel</Text>
+//   </TouchableOpacity>
+// ),
+// headerRight: (
+//   <TouchableOpacity style={{ marginRight: 10 }}>
+//     <Text>Next</Text>
+//   </TouchableOpacity>
+// ),
 
 
 export default AddPostNavigator;

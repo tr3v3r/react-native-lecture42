@@ -101,3 +101,43 @@ export default class AddDescriptionScreen extends Component {
     );
   }
 }
+
+/*
+
+ <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="never"
+      >
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={{ uri }} />
+          <TextInput
+            placeholder="Write your name..."
+            style={styles.input}
+            onChangeText={this.onChangeText}
+          />
+        </View>
+
+      </ScrollView>
+
+*/
+
+
+/*
+ return {
+      title: 'New Post',
+      headerForceInset: { top: 'never' },
+      headerTintColor: '#34393d',
+      headerTitleContainerStyle: {
+        justifyContent: 'center',
+      },
+      headerRight: (
+        <TouchableOpacity style={{ marginRight: 10 }}
+          <Text>Share</Text>
+        </TouchableOpacity>
+      ),
+      headerStyle: {
+        height: 40,
+      },
+    };
+
+    */

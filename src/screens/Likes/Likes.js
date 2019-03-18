@@ -29,10 +29,10 @@ export default class Likes extends Component {
       data: [...prevState.data, 'Piphia'],
     }));
 
-    this.animateHeadline();
+    this.animate();
   }
 
-  animateHeadline = () => {
+  animate = () => {
     Animated.sequence([
       Animated.timing(this.animatedValue, {
         duration: 2000,
@@ -123,3 +123,12 @@ export default class Likes extends Component {
      );
    }
 }
+
+
+// animate = () => {
+//   Animated.timing(this.animatedValue, {
+//     duration: 1000,
+//     toValue: 1,
+//     easing: Easing.quad,
+//   }).start();
+// };

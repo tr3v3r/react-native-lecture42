@@ -46,3 +46,44 @@ const LikesStackNavigator = createStackNavigator({
 
 
 export default LikesStackNavigator;
+
+
+/*
+import { Animated } from 'react-native';
+
+import {
+  createStackNavigator,
+} from 'react-navigation';
+
+import Likes from '../../screens/Likes';
+import Draggable from '../../screens/Draggable';
+
+const LikesStackNavigator = createStackNavigator({
+  'likes': {
+    screen: Likes,
+    navigationOptions: () => {
+      return {
+        headerTitleContainerStyle: {
+          justifyContent: 'center',
+        },
+        headerTitle: 'Likes',
+      };
+    },
+
+  },
+  'draggable': Draggable,
+}, {
+
+});
+
+
+export default LikesStackNavigator;
+
+*/
+
+
+// function TitleComponent() {
+//   return (
+//     <Text style={{ fontSize: 20 }}>Likes</Text>
+//   );
+// }

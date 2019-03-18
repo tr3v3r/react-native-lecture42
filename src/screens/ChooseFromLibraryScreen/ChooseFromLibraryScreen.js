@@ -91,3 +91,33 @@ export default class ChooseFromLibraryScreen extends Component {
     );
   }
 }
+
+
+// try {
+//   await askPermissionFor(
+//     PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+//     'Read Storage Permission',
+//     'App need acces to read your photo storage',
+//   );
+
+//   const r = await CameraRoll.getPhotos({
+//     first: 20,
+//     assetType: 'Photos',
+//   });
+
+//   const photos = r.edges.map(p => p.node.image.uri);
+//   this.setState({ photos });
+// } catch (error) {
+//   console.warn(error.message);
+// }
+
+/*
+<View style={styles.container}>
+<Image
+  style={styles.pickedImage}
+  resizeMode="cover"
+  source={{ uri: this.state.pickedImage }}
+/>
+
+</View>
+*/

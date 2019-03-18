@@ -111,3 +111,37 @@ export default class TakePhotoScreen extends Component {
     );
   }
 }
+/*
+
+<View style={styles.container}>
+<View
+  style={styles.preview}
+>
+  <RNCamera
+    ref={this.camera}
+    style={styles.camera}
+    type={this.state.type}
+    flashMode={RNCamera.Constants.FlashMode.off}
+    permissionDialogTitle="Permission to use camera"
+    permissionDialogMessage="We need your permission to use your camera phone"
+  />
+        </View>
+
+
+</View>
+*/
+
+/*
+
+takePicture = async() => {
+  try {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.current.takePictureAsync(options);
+    }
+  } catch (error) {
+    alert(error);
+  }
+};
+
+*/
